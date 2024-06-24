@@ -1,0 +1,24 @@
+Let's start by making a very simple UI
+1. Add a timer as a title
+<h1 id="timer">25:00<h1>
+
+Now let's center it on the page by using css
+Once it's done, we'll style the timer so it gets a nice font and round border-radius where we'll click to start later
+
+Next we style the background of the body and timer, so it gets a nice, relaxing gradient color
+
+Now that everything is styled, we'll add an hover interaction on the timer so that it grows a little bit bigger
+when hovering
+Hovering DONE. But there's a small problem. Cursor becomes 'selecting' when hovering over the text. We need to fix that
+Luckily, there's a way to avoid that ! => cursor: pointer;
+'cursor' property allows the user to manually decide which of the different cursors it has to be
+
+In order for the timer to work with JavaScript, we'll actually need to separate the minutes and the seconds
+This will allow use to work with them easily on the next step, which is to initiate our JS function
+
+Now that everything's done, I saw that a flex-box display won't be great because when we click the timer while it's
+already running, the timer obviously goes a bit upper
+There's two ways to avoid that:
+    1. We set its position to absolute, to make sure it doesn't move when the screen displays another message
+Only problem is the added text goes behind the timer, and we want to avoid that
+    2. We change the display to a grid, so we can better place all of our elements

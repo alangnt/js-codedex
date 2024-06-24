@@ -1,0 +1,112 @@
+/*Remove margin and padding of every element of the website + border-box*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*Define a height for the body so it can take the entire screen*/
+body {
+  height: 100vh;
+}
+
+/*Center MAIN block using flex*/
+main {
+  /*As seen in the steps.txt, line 19, we need a grid display to better place the elements*/
+  /*That way, we don't have to setup an alert because it will pause the timer while we don't press OK*/
+  /*Here's some links to document myself:*/
+  /*Simple grid displays: https://www.w3schools.com/css/css_grid.asp */
+  /*Everything to know about grid displays: https://css-tricks.com/snippets/css/complete-guide-grid/ */
+  display: grid;
+  grid-template-rows: no-repeat(3, 1fr);
+  place-items: center;
+
+  /*Height of the MAIN*/
+  height: 100%;
+
+  /*Add a gap between the blocks*/
+  gap: 2rem;
+
+  /*Style the main block to get a nice font and font-color*/
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #632b6c;
+
+  /*Style the background so it can get gradients colors. Respect the color scheme so they feel relaxing*/
+  /*Here's a link to know how exactly it works if you ever forget: https://www.w3schools.com/css/css3_gradients.asp */
+  /*Here's the links where you found the color scheme:*/
+  /*Background: https://www.color-hex.com/color-palette/37363 */
+  /*Timer: https://www.color-hex.com/color-palette/85811 */
+  background-image: linear-gradient(
+      /*Here you can specify the direction*/
+      -20deg, #c76b98, #fcc3a3);
+}
+
+/*Style the page title and place it on the Grid*/
+.title {
+  font-size: 3rem;
+  font-weight: 400;
+
+  /*Place on Grid*/
+  grid-row: 1;
+  align-self: end;
+}
+
+/*Style the timer count so it gets a nice and clickable border (later in JS)*/
+/*Here's the list of all the types of borders: https://www.w3schools.com/cssref/pr_border-style.php */
+#timer {
+  background-image: linear-gradient(-20deg, #b85c8a, #d06580);
+
+  /*Add a shadow so it can look even better*/
+  /*Here's a link to know more about box-shadow property: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
+  /*Here's another one to test before putting in the code: https://box-shadow.dev/ */
+  /*Here's a third one with some examples: https://getcssscan.com/css-box-shadow-examples (below is example #89)*/
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+  /* Define a size for the container and the H1*/
+  height: 20rem;
+  width: 20rem;
+  font-size: 4rem;
+
+  /* Use % so it can get a round shape */
+  border-radius: 50%;
+
+  /* Style the container so it gets the H1 centered */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /*Initiate a transition here*/
+  /*Scale will change the entire values of the height, width and font-size AND save some space and memory*/
+  transition: scale ease 0.1s;
+
+  /*Removes the 'selecting' cursor when hovering over the text*/
+  cursor: pointer;
+
+  /*Place it at the center of the page using GRID*/
+  grid-row: 2;
+}
+
+/*Create an hovering action to make it grow a little bit bigger*/
+/*Here's a documentation on how the transition property works: https://developer.mozilla.org/en-US/docs/Web/CSS/transition */
+#timer:hover {
+  scale: 1.05;
+}
+
+/*This message will display if we click the timer while it's already running*/
+.already-started {
+  font-size: 2rem;
+
+  /*Place it right below the timer using GRID*/
+  grid-row: 3;
+  align-self: start;
+
+  /*Starts its condition with no opacity so it can stay counted by the Grid*/
+  opacity: 0;
+}
+
+/*Will set the opacity of the text at 1 when it triggers alreadyStarted in JavaScript*/
+.show {
+  opacity: 1;
+}
